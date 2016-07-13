@@ -30,13 +30,18 @@
 }
 #pragma mark - 创建内部button
 - (void)setupButtons {
-    for (int i = 0; i<4; i++) {
+    for (int i = 0; i< (self.imageArray.count == 0 ? 4: self.imageArray.count); i++) {
         UIButton *button = [[UIButton alloc]init];
         button.tag = i;
         button.frame = self.frame;
         button.hidden = YES;
         button.alpha = 0;
-        button.backgroundColor = [UIColor colorWithRed:((float)arc4random_uniform(256) / 255.0) green:((float)arc4random_uniform(256) / 255.0) blue:((float)arc4random_uniform(256) / 255.0) alpha:1.0];
+        if (self.imageArray.count == 0) {
+            
+            button.backgroundColor = [UIColor colorWithRed:((float)arc4random_uniform(256) / 255.0) green:((float)arc4random_uniform(256) / 255.0) blue:((float)arc4random_uniform(256) / 255.0) alpha:1.0];
+        }else {
+            [button setImage:self.imageArray[i] forState:UIControlStateNormal];
+        }
         
         button.layer.cornerRadius = 25;
         button.layer.masksToBounds = YES;

@@ -10,5 +10,7 @@
 
 @interface MenuButton : UIButton
 @property (nonatomic, copy) void (^clickBlock)(NSInteger integer);
+@property (nonatomic, strong) NSArray<UIImage *> *imageArray;
+
 + (instancetype)creatMenuButton;
 @end
